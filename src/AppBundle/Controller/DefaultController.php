@@ -22,7 +22,7 @@ class DefaultController extends Controller
      */
     public function aboutAction()
     {
-        return $this->render('default/index.html.twig');
+        return $this->render('default/about.html.twig');
     }
 
     /**
@@ -30,6 +30,6 @@ class DefaultController extends Controller
      */
     public function contactAction()
     {
-        return $this->render('default/index.html.twig');
+        return $this->render('default/contact.html.twig');
     }
 }

@@ -47,6 +47,10 @@ class UserController extends Controller
      */
     public function showAction()
     {
-        return $this->render('user/user-list.html.twig');
+        $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+
+        $user = $repository->findAll();
+
+        return $this->render('user/user-list.html.twig', array('user' => $user ));
     }
 }

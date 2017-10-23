@@ -1,1 +1,31 @@
 {% extends 'base.html.twig'%}
+{% block body %}
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th id="user-list-header">#</th>
+                <th id="user-list-header">Nombre</th>
+                <th id="user-list-header">Apellidos</th>
+                <th id="user-list-header">Nombre de usuario</th>
+                <th id="user-list-header">Correo electrónico</th>
+                <th id="user-list-header">Modificar</th>
+                <th id="user-list-header">Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for users in user  %}
+            <tr>
+                <td id="user-list-body">{{ users.id }}</td>
+                <td id="user-list-body">{{ users.name }}</td>
+                <td id="user-list-body">{{ users.surname }}</td>
+                <td id="user-list-body">{{ users.username }}</td>
+                <td id="user-list-body">{{ users.email }}</td>
+                <td id="user-list-body"><a href=""><button class="btn btn-warning">Modificar</button></a></td>
+                <td id="user-list-body"><a href=""><button class="btn btn-danger">Eliminar</button></a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
