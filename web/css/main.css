@@ -10,7 +10,9 @@ html,body {
 a.navbar-brand {
     margin-right: -15%;
 }
-
+nav.navbar.navbar-toggleable-md.navbar-light.bg-faded {
+    width: 100%;
+}
 /* USER-LIST */
 #user-list-header {
     text-align: center;
@@ -19,6 +21,14 @@ a.navbar-brand {
     text-align: center;
 }
 
+/* REGISTER */
+div#regiser-form{
+    margin-top: 5%;
+}
+#appbundle_user_Registrarse{
+    background-color: #1fa67b;
+    border-color: #1fa67b; 
+}
 
 /* LOGIN */
 #logo-login {

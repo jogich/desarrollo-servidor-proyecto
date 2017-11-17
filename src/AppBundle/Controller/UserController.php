@@ -53,4 +53,16 @@ class UserController extends Controller
 
         return $this->render('user/user-list.html.twig', array('user' => $user ));
     }
+
+    /**
+     * @Route("/user/update/{id}", name="user-update")
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+
+        $user = $repository->findAll();
+
+        return $this->render('user/user-list.html.twig', array('user' => $user ));
+    }
 }
