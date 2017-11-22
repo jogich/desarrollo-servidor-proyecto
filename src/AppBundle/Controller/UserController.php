@@ -87,7 +87,7 @@ class UserController extends Controller
     /**
      * @Route("/user/show/id/{id}", name="user-show-one-id") 
      */
-    public function showOneByNameAction($id)
+    public function showOneByIdAction($id)
     {
         // almacenamos la entidad en una variable
         $repository = $this->getDoctrine()->getRepository('AppBundle:User');
