@@ -65,4 +65,39 @@ class UserController extends Controller
 
         return $this->render('user/user-list.html.twig', array('user' => $user ));
     }
+
+
+    // EXAMEN
+
+    /**
+     * @Route("/user/show/{name}", name="user-show-name") 
+     */
+    public function showByNameAction($name="Paco")
+    {
+        // almacenamos la entidad en una variable
+        $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+
+        // realizamos la búsqueda por nombre
+        $user = $repository->findByName($name);
+
+        // devolvemos los datos en un array
+        return $this->render('user/user-show-name.html.twig', array('user' => $user));
+    }
+
+    /**
+     * @Route("/user/show/id/{id}", name="user-show-one-id") 
+     */
+    public function showOneByNameAction($id)
+    {
+        // almacenamos la entidad en una variable
+        $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+
+        // realizamos la busqueda por el id
+        $user = $repository->findById($id);
+
+        // devolvemos los datos en un array
+        return $this->render('user/user-show-one-id.html.twig', array('user' => $user));
+    }
+
+
 }
