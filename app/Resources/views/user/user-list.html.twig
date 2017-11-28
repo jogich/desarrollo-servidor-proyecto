@@ -21,8 +21,8 @@
                 <td id="user-list-body">{{ users.surname }}</td>
                 <td id="user-list-body">{{ users.username }}</td>
                 <td id="user-list-body">{{ users.email }}</td>
-                <td id="user-list-body"><a href="#"><button class="btn btn-warning">Modificar</button></a></td>
-                <td id="user-list-body"><a href="#"><button class="btn btn-danger">Eliminar</button></a></td>
+                <td id="user-list-body"><a href="{{ path('user-update', { 'id': users.id }) }}"><button class="btn btn-warning">Modificar</button></a></td>
+                <td id="user-list-body"><a href="{{ path('user-delete', { 'id': users.id }) }}"><button class="btn btn-danger">Eliminar</button></a></td>
             </tr>
             {% endfor %}
             </tbody>

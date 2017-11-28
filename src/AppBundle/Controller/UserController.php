@@ -59,11 +59,32 @@ class UserController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+        
+        $form = $this->createForm(UserType::class, $user);
 
-        $user = $repository->findAll();
+        $form->handleRequest($request);
+        if ($form->isValid() && $form->isSubmitted()) {
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('user');
+        }
+        return $this->render('user/user-update.html.twig', array('form_update_user' => $form->createView()));
+    }
 
-        return $this->render('user/user-list.html.twig', array('user' => $user ));
+    /**
+     * @Route("/user/delete/{id}", name="user-delete")
+     */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('AppBundle:User')->findOneById($id);
+
+        $em->remove($user);
+        $em->flush();
+
+        return $this->redirectToRoute('user-list');
     }
 
 
