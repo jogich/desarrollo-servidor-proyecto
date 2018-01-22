@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
     /**
-     * @Route("/register/", name="register")
+     * @Route("/user/new/", name="new-user")
      */
     public function registerAction(Request $request)
     {
@@ -34,16 +34,9 @@ class UserController extends Controller
         return $this->render('user/register.html.twig', ['register_form' => $form->createView()]);
     }
 
-    /**
-     * @Route("/login/", name="login")
-     */
-    public function aboutAction()
-    {
-        return $this->render('user/login.html.twig');
-    }
 
     /**
-     * @Route("/user-list/", name="user-list")
+     * @Route("/user/show", name="user-list")
      */
     public function showAction()
     {
@@ -55,7 +48,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/user/update/{id}", name="user-update")
+     * @Route("/user/update/{id}", name="update-user")
      */
     public function updateAction(Request $request, $id)
     {
@@ -74,7 +67,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/user/delete/{id}", name="user-delete")
+     * @Route("/user/delete/{id}", name="delete-user")
      */
     public function deleteAction($id)
     {
@@ -120,5 +113,11 @@ class UserController extends Controller
         return $this->render('user/user-show-one-id.html.twig', array('user' => $user));
     }
 
-
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout()
+    {
+        
+    }
 }

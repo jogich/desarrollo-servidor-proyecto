@@ -15,11 +15,15 @@
                 <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('img/logo.png') }}" alt="" id="brand-logo"></a>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="{{ path('about') }}">Sobre nosotros</a>
-                        <a class="nav-item nav-link" href="{{ path('contact') }}">Contacto</a>
-                        <a class="nav-item nav-link" href="{{ path('register') }}">Registro</a>
-                        <a class="nav-item nav-link" href="{{ path('user-list') }}">Lista de usuarios</a>
-                        <a class="nav-item nav-link" href="{{ path('login') }}">Entrar</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a class="nav-item nav-link" href="{{ path('new-user') }}">Registro</a>
+                            <a class="nav-item nav-link" href="{{ path('user-list') }}">Lista de usuarios</a>
+                            <a class="nav-item nav-link" href="{{ path('logout') }}">Salir</a>
+                        {% else %}
+                            <a class="nav-item nav-link" href="{{ path('about') }}">Sobre nosotros</a>
+                            <a class="nav-item nav-link" href="{{ path('contact') }}">Contacto</a>
+                            <a class="nav-item nav-link" href="{{ path('login') }}">Entrar</a>
+                        {% endif %}
                     </div>
                 </div>
             </nav>
