@@ -54,7 +54,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @Assert\NotBlank()
+     
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
@@ -65,6 +65,11 @@ class User implements UserInterface
      * @ORM\Column(name="password", type="string", length=64)
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="json_array")
+     */
+    private $roles = array();
 
     /**
      * Get id
@@ -197,9 +202,16 @@ class User implements UserInterface
         return null;
     }
 
+    public function setRoles(array $roles)
+    {
+        
+        $this->roles = $roles;
+        return $this;
+    }
+
     public function getRoles()
     {
-        return array('ROLE_ADMIN');
+        return $this->roles;
     }
 
     public function eraseCredentials()

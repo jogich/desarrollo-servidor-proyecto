@@ -29,7 +29,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render('user/register.html.twig', ['register_form' => $form->createView()]);
     }
@@ -52,7 +52,10 @@ class UserController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        
+        $repository = $this->getDoctrine()->getRepository('AppBundle:User');
+
+        // realizamos la busqueda por el id
+        $user = $repository->findOneById($id);
         $form = $this->createForm(UserType::class, $user);
 
         $form->handleRequest($request);
@@ -61,7 +64,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('user');
+            return $this->redirectToRoute('user-list');
         }
         return $this->render('user/user-update.html.twig', array('form_update_user' => $form->createView()));
     }
